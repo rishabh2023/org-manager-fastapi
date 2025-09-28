@@ -1,0 +1,53 @@
+# Python cache / compiled files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environment
+venv/
+.env/
+.venv/
+
+# IDE / editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Alembic cache
+alembic/versions/*.pyc
+alembic/__pycache__/
+alembic/versions/__pycache__/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+.env.*
+*.env
+
+
+# Coverage / test reports
+htmlcov/
+.tox/
+.coverage
+.pytest_cache/
+.mypy_cache/
+.dmypy.json
+.pyre/
+
+# Local SQLite or test DBs
+*.db
+*.sqlite
