@@ -116,6 +116,7 @@ uvicorn app.main:app --host 0.0.0.0 --port 8000
 ```
 
 The server will be available at:
+
 - **Local**: http://127.0.0.1:8000
 - **API Docs**: http://127.0.0.1:8000/docs (Swagger UI)
 - **ReDoc**: http://127.0.0.1:8000/redoc (Alternative API docs)
@@ -124,11 +125,12 @@ The server will be available at:
 
 ### Health Check
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `GET` | `/api/db-check` | Test database connection |
+| Method | Endpoint        | Description              |
+| ------ | --------------- | ------------------------ |
+| `GET`  | `/api/db-check` | Test database connection |
 
 **Response:**
+
 ```json
 {
   "status": "ok",
@@ -140,13 +142,13 @@ The server will be available at:
 
 > 🔒 **All organization endpoints require authentication via `Authorization: Bearer <JWT>` header**
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `POST` | `/api/organizations` | Create new organization |
-| `GET` | `/api/organizations` | List all user's organizations |
-| `GET` | `/api/organizations/{id}` | Get specific organization |
-| `PUT` | `/api/organizations/{id}` | Update organization |
-| `DELETE` | `/api/organizations/{id}` | Delete organization |
+| Method   | Endpoint                  | Description                   |
+| -------- | ------------------------- | ----------------------------- |
+| `POST`   | `/api/organizations`      | Create new organization       |
+| `GET`    | `/api/organizations`      | List all user's organizations |
+| `GET`    | `/api/organizations/{id}` | Get specific organization     |
+| `PUT`    | `/api/organizations/{id}` | Update organization           |
+| `DELETE` | `/api/organizations/{id}` | Delete organization           |
 
 ### Example Requests
 
@@ -204,15 +206,15 @@ curl -X GET http://127.0.0.1:8000/api/organizations \
 
 Key packages used in this project:
 
-| Package | Purpose |
-|---------|---------|
-| **FastAPI** | Modern, fast web framework |
-| **SQLAlchemy** | Async ORM for database operations |
-| **Alembic** | Database migration tool |
-| **asyncpg** | Async PostgreSQL driver |
-| **python-jose** | JWT token validation |
-| **httpx** | Async HTTP client for JWKS |
-| **pydantic** | Data validation and settings |
+| Package         | Purpose                           |
+| --------------- | --------------------------------- |
+| **FastAPI**     | Modern, fast web framework        |
+| **SQLAlchemy**  | Async ORM for database operations |
+| **Alembic**     | Database migration tool           |
+| **asyncpg**     | Async PostgreSQL driver           |
+| **python-jose** | JWT token validation              |
+| **httpx**       | Async HTTP client for JWKS        |
+| **pydantic**    | Data validation and settings      |
 
 See `requirements.txt` for complete dependency list.
 
@@ -239,6 +241,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Support
 
 If you have any questions or need help, please:
+
 - Open an issue on GitHub
 - Check the [API documentation](http://127.0.0.1:8000/docs) when running locally
 
