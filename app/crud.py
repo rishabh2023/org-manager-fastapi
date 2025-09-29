@@ -9,8 +9,12 @@ async def create_org(db: AsyncSession, org: schemas.OrgCreate, user_id: str):
     await db.refresh(db_org)
     return db_org
 
-async def get_orgs(db: AsyncSession, user_id: str):
-    result = await db.execute(select(models.Organization).where(models.Organization.owner_user_id == user_id))
+async def get_orgs(db: AsyncSession, user_id: str, q: str | None = None, limit: int = 50, offset: int = 0):
+    stmt = select(models.Organization).where(models.Organization.owner_user_id == user_id)
+    if q:
+        stmt = stmt.where(models.Organization.name.ilike(f"%{q}%"))
+    stmt = stmt.order_by(models.Organization.created_at.desc()).limit(limit).offset(offset)
+    result = await db.execute(stmt)
     return result.scalars().all()
 
 async def get_org(db: AsyncSession, org_id: str, user_id: str):

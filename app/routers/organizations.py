@@ -1,10 +1,9 @@
-from fastapi import APIRouter, Depends, HTTPException, Request
+from fastapi import APIRouter, Depends, HTTPException, Request, Query
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.db import SessionLocal
 from app import crud, schemas
 from app.auth import get_current_user
-from jose import jwt
-from app.auth import get_jwks
+
 
 router = APIRouter(prefix="/organizations", tags=["organizations"])
 
@@ -24,10 +23,13 @@ async def create_organization(
 
 @router.get("/", response_model=list[schemas.OrgOut])
 async def list_organizations(
+    q: str | None = Query(None, min_length=1, max_length=100),
+    limit: int = Query(50, ge=1, le=200),
+    offset: int = Query(0, ge=0),
     db: AsyncSession = Depends(get_db),
     user=Depends(get_current_user),
 ):
-    return await crud.get_orgs(db, user_id=user["user_id"])
+    return await crud.get_orgs(db, user_id=user["user_id"], q=q, limit=limit, offset=offset)
 
 @router.get("/{org_id}", response_model=schemas.OrgOut)
 async def get_organization(
