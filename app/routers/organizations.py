@@ -1,10 +1,14 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Request
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.db import SessionLocal
 from app import crud, schemas
 from app.auth import get_current_user
+from jose import jwt
+from app.auth import get_jwks
 
 router = APIRouter(prefix="/organizations", tags=["organizations"])
+
+
 
 async def get_db():
     async with SessionLocal() as session:
